@@ -9,7 +9,7 @@ const router = express.Router()
 //get accounts
 router.get('/', (req, res) => {
 
-    db('accounts')
+    db('accounts').limit(req.query.limit || 5).orderBy('id', 'desc')
         .then(accounts => {
             res.status(200).json(accounts)
         })
@@ -104,6 +104,7 @@ router.put('/:id', (req, res) => {
     router.delete('/:id', (req, res) => {
         db('accounts')
         .where({id: req.params.id})
+        .first()
         .then( accountDeleted => {
             db('accounts')
             .where({id: req.params.id})

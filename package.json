@@ -3,7 +3,10 @@
     "version": "1.0.0",
     "main": "index.js",
     "scripts": {
-        "server": "nodemon index.js"
+        "server": "nodemon index.js",
+        "start": "node index.js",
+        "migrate": "knex migrate:latest",
+        "unmigrate": "knex migrate:rollback"
     },
     "repository": "https://github.com/LambdaSchool/node-db1-project",
     "dependencies": {
